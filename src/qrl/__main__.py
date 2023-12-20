@@ -78,7 +78,12 @@ if sys.argv[1] == "youtube":
     sys.exit(0)
 
 if sys.argv[1] == "wifi":
-    lines = open(sys.argv[2], "r").read().split("\n")
+    lines=None
+    if sys.argv[2] == "-":
+        import sys
+        lines = sys.stdin.read().split("\n")
+    else:
+        lines = open(sys.argv[2], "r").read().split("\n")
     ssid = lines[0].strip()
     enctype = lines[1].strip()
     pw = lines[2].strip()
